@@ -30,7 +30,7 @@ public class EndPointTest extends AndroidTestCase {
 
         String result = null;
         EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask();
-        endpointsAsyncTask.execute(new Pair<Context, String>(getContext(), null));
+        endpointsAsyncTask.execute(new Pair<Context, String>(getContext(), "Joke"));
         try {
             result = endpointsAsyncTask.get();
         } catch (Exception e) {

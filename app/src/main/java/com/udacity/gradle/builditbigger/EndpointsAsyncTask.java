@@ -49,13 +49,4 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
         }
     }
 
-    @Override
-    protected void onPostExecute(String result) {
-        if(result!=null){
-            Intent intent = new Intent(context, JokeActivity.class);
-            intent.putExtra(JokeActivity.JOKE_KEY,result);
-            context.startActivity(intent);
-            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-        }
-    }
 }

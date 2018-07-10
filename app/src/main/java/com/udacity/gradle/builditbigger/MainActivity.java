@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.suzanelsamahy.androidjokelib.JokeActivity;
 import com.suzanelsamahy.javajokelib.JavaJoke;
@@ -46,12 +47,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void tellJoke(View view) {
-            JavaJoke joke = new JavaJoke();
-//      Toast.makeText(this, joke.tellAJavaJoke(), Toast.LENGTH_SHORT).show();
-            new EndpointsAsyncTask().execute(new Pair<Context, String>(this, joke.tellAJavaJoke()));
-//        Intent intent = new Intent(this, JokeActivity.class);
-//        intent.putExtra(JokeActivity.JOKE_KEY, joke.tellAJavaJoke());
-//        startActivity(intent);
+        final JavaJoke joke = new JavaJoke();
+        new EndpointsAsyncTask() {
+            @Override
+            protected void onPostExecute(String s) {
+                if (s != null) {
+                    Intent intent = new Intent(MainActivity.this, JokeActivity.class);
+                    intent.putExtra(JokeActivity.JOKE_KEY, joke.tellAJavaJoke());
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "No joke", Toast.LENGTH_LONG).show();
+                }
+            }
+        }.execute(new Pair<Context, String>(this, joke.tellAJavaJoke()));
+
+
+
 
     }
 }
