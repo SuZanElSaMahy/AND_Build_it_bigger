@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.free;//package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.suzanelsamahy.androidjokelib.JokeActivity;
 import com.suzanelsamahy.javajokelib.JavaJoke;
+import com.udacity.gradle.builditbigger.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -60,9 +61,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }.execute(new Pair<Context, String>(this, joke.tellAJavaJoke()));
-
-
-
-
     }
 }
